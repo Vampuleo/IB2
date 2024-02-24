@@ -2,6 +2,7 @@ import busio
 import digitalio
 import board
 import numpy as np
+from scipy import fftpack
 
 import time
 import adafruit_mcp3xxx.mcp3008 as MCP
