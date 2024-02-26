@@ -2,7 +2,7 @@ import busio
 import digitalio
 import board
 import numpy as np
-from scipy import fftpack
+
 
 import time
 import adafruit_mcp3xxx.mcp3008 as MCP
@@ -18,10 +18,10 @@ print("start")
 
 
 # total number of samples you want to collect
-num_samples = 500
+num_samples = 1000
 
 # number of samples acquired per second
-sample_rate = 1000
+sample_rate = 500
 
 #signal duration
 signal_duration = num_samples/sample_rate
@@ -39,10 +39,12 @@ voltage_samples = []
 
 start_time = time.time()  # Record the start time
 
+
 while i < num_samples:
     voltage = channel.voltage
     voltage_samples.append(voltage)
-    time.sleep(1/sample_rate) #help pls
+    #making sure we collect at desired rate
+    time.sleep(1/sample_rate)
     i += 1
 
 end_time = time.time()  # Record the end time
@@ -54,6 +56,8 @@ time_axis = np.linspace(0, total_time, num_samples)
 while j < len(voltage_samples):
     print(voltage_samples[j])
     j += 1
+
+
 
 # Find the indices corresponding to the lower and upper frequencies
 lower_index = int(lower_frequency * num_samples / sample_rate)

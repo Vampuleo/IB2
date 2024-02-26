@@ -1,4 +1,4 @@
-from matplotlib import pyplot as plt
+#from matplotlib import pyplot as plt
 import numpy as np
 from scipy import fftpack
 
@@ -8,10 +8,12 @@ time_step = 0.05
 time_vec = np.arange(0, 10, time_step)
 period = 5
 
-#now creating a signal (sin wave), dividing by period creats more points for the cycle (100 points for 1 cycle now)
+#now creating a signal (sin wave), dividing by period creates more points for the cycle (100 points for 1 cycle now)
 sig = (np.sin(2*np.pi*time_vec/period)) + 0.25*np.random.randn(time_vec.size)
 #every 20 points, we complete one cycle (0.05 * 20 = 1)
 
+
+#need code from here out
 sig_fft = fftpack.fft(sig)
 
 Amplitude = np.abs(sig_fft)
