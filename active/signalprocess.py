@@ -2,8 +2,6 @@ import busio
 import digitalio
 import board
 import numpy as np
-
-
 import time
 import adafruit_mcp3xxx.mcp3008 as MCP
 from adafruit_mcp3xxx.analog_in import AnalogIn
@@ -65,5 +63,4 @@ answer = abs(peak_freq/1.55)
 
 
 print("end")
-print(len(voltage_samples))
-print(answer)
+print("Dominant Freq: ", answer)
