@@ -16,7 +16,7 @@ print("start")
 
 
 # total number of samples you want to collect
-num_samples = 5000
+num_samples = 500
 
 # number of samples acquired per second
 sample_rate = 1000

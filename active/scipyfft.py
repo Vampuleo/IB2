@@ -1,6 +1,6 @@
 #from matplotlib import pyplot as plt
 import numpy as np
-from scipy import fftpack
+
 
 #setting time intervals (will be time in between samples)
 time_step = 0.05
