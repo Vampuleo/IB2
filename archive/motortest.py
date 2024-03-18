@@ -12,9 +12,9 @@ i = 0
 # Move the servo back and forth
 while i != 50:
     p.ChangeDutyCycle(3)     # Changes the pulse width to 3 (so moves the servo)
-    sleep(2)                 # Wait 1 second
+    sleep(1)                 # Wait 1 second
     p.ChangeDutyCycle(12)    # Changes the pulse width to 12 (so moves the servo)
-    sleep(2)
+    sleep(1)
     i += 1
 # Clean up everything
 p.stop()                 # At the end of the program, stop the PWM

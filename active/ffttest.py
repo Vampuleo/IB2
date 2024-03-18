@@ -1,7 +1,7 @@
 import busio
 import digitalio
 import board
-import numpy as np
+# import numpy as np
 
 
 import time

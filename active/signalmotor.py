@@ -1,5 +1,4 @@
 import sys
-
 import busio
 import digitalio
 import board
