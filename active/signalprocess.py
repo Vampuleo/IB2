@@ -5,7 +5,6 @@ import numpy as np
 import time
 import adafruit_mcp3xxx.mcp3008 as MCP
 from adafruit_mcp3xxx.analog_in import AnalogIn
-#import matplotlib.pyplot as plt
 
 spi = busio.SPI(clock=board.SCK, MISO=board.MISO, MOSI=board.MOSI)
 cs = digitalio.DigitalInOut(board.D5)
@@ -36,15 +35,8 @@ start_time = time.time()  # Record the start time
 while i < num_samples:
     voltage = channel.voltage
     voltage_samples.append(voltage)
-    #making sure we collect at desired rate
     time.sleep(time_step)
     i += 1
-
-end_time = time.time()  # Record the end time
-total_time = end_time - start_time
-
-# Generate the time axis on graph
-time_axis = np.linspace(0, total_time, num_samples)
 
 while j < len(voltage_samples):
     print(voltage_samples[j])
@@ -60,7 +52,6 @@ X_mag_no_DC[DC_index] = 0  # Set the DC component to zero before finding the pea
 Amp_Position = X_mag_no_DC.argmax()
 peak_freq = frequency_axis[Amp_Position]
 answer = abs(peak_freq/1.55)
-
 
 print("end")
 print("Dominant Freq: ", answer)
