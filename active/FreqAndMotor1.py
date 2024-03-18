@@ -6,13 +6,13 @@ import time
 import adafruit_mcp3xxx.mcp3008 as MCP
 from adafruit_mcp3xxx.analog_in import AnalogIn
 
-from active.MotorDriver import turnMotor
+# from active.MotorDriver import turnMotor
 
 
 # Set up libraries and overall settings for motor
 import RPi.GPIO as GPIO  # Imports the standard Raspberry Pi GPIO library
 from time import sleep   # Imports sleep (aka wait or pause) into the program
-GPIO.setmode(GPIO.BOARD) # Sets the pin numbering system to use the physical layout
+# GPIO.setmode(GPIO.BOARD) # Sets the pin numbering system to use the physical layout
 GPIO.setwarnings(False)
 
 # Set up pin 11 for PWM
@@ -26,7 +26,7 @@ cs = digitalio.DigitalInOut(board.D5)
 mcp = MCP.MCP3008(spi, cs)
 # specify which channel of the MCP3008 we are using
 channel = AnalogIn(mcp, MCP.P0)
-print("start")
+
 
 # total number of samples you want to collect
 num_samples = 500
@@ -37,11 +37,6 @@ sample_rate = 1000
 time_step = 1 / sample_rate
 # signal duration
 signal_duration = num_samples / sample_rate
-
-
-import time
-import numpy as np
-# Make sure to import or define 'channel' and other necessary modules and variables here
 
 def getFrequency():
     i = 0
@@ -72,16 +67,11 @@ def getFrequency():
     Amp_Position = X_mag_no_DC.argmax()
     peak_freq = frequency_axis[Amp_Position]
     answer = abs(peak_freq / 1.55)
+    freq = int(answer);
 
     #print("end")
     print("Dominant/Current Freq: ", answer)
-    turnMotor(answer, 0.3)
-
-run = True
-i = 0
-while run:
-    getFrequency()
-
+    turnMotor(freq, 0.3)
 
 def turnMotor(freq, time):
     if freq < 75:
@@ -96,3 +86,8 @@ def turnMotor(freq, time):
         getFrequency()
     else:
         getFrequency()
+
+
+
+print("start")
+getFrequency()
